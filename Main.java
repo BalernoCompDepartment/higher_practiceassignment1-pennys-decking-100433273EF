@@ -16,28 +16,17 @@ class Main {
     
     Deck [] Decks = getInfo();
     int userChoice = 0;
-
+//this should be a function 
     while (userChoice != 4) {
-      
-      while(!(userChoice == 1 || userChoice == 2 || userChoice == 3 || userChoice == 4 )) {
-        
-        userChoice = Keyboard.getInt("Enter 1 to find the cheapest garden deck \nEnter 2 to display the names of garden decks over a certain length \nEnter 3 to display the number of garden decks that are available over a certain area \nEnter 4 to quit");
-
-        if (!(userChoice == 1 || userChoice == 2 || userChoice == 3 || userChoice == 4 )) {
-          System.out.println("Invalid input");
-        }
-     }
-     
+      userChoice = getValidChoice();
+//to get the choice from the user
+//something like .... int getValidChoice() { ...... }
      if (userChoice == 1) {
        cheapestDeck(Decks);
        userChoice = 0;
      } else if (userChoice == 2) {
-       //String[] lengthDecks = certainLength(Decks); 
-       //for (int index = 0; index < lengthDecks.length; index ++) {
-         //System.out.println(lengthDecks[index]);
-      // }
-    certainLength2(Decks);
-    userChoice = 0;
+       certainLength2(Decks);
+       userChoice = 0;
      } else if (userChoice == 3) {
        int noOfDecks = greaterArea(Decks);
        System.out.println(noOfDecks + " decks are bigger than the specified area.");
@@ -46,6 +35,22 @@ class Main {
    }
   } 
 
+public static int getValidChoice() {
+
+  int tempChoice = 0;
+
+  while(!(tempChoice == 1 || tempChoice == 2 || tempChoice == 3 || tempChoice == 4 )) {
+        
+    tempChoice = Keyboard.getInt("Enter 1 to find the cheapest garden deck \nEnter 2 to display the names of garden decks over a certain length \nEnter 3 to display the number of garden decks that are available over a certain area \nEnter 4 to quit");
+
+    if (!(tempChoice == 1 || tempChoice == 2 || tempChoice == 3 || tempChoice == 4 )) {
+      System.out.println("Invalid input");
+    }
+  }
+
+  return tempChoice;
+ 
+}
 
 public static Deck[] getInfo() {
 
@@ -150,4 +155,3 @@ public static int greaterArea(Deck tempDecks[]) {
   return count;
 }
 }
-
